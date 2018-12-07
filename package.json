@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/MichaelRajchert/NCGotron/issues"
   },
-  "homepage": "https://github.com/MichaelRajchert/NCGotron#readme"
+  "homepage": "https://github.com/MichaelRajchert/NCGotron#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
 }
