@@ -4,7 +4,7 @@ class DiceRollCommand extends commando.Command{
     constructor(client){
         super(client,{
             name: 'roll',
-            group: 'simple',
+            group: 'chance',
             memberName: 'roll',
             description: 'Rolls a die. Obviously.'
         });
