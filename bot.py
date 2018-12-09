@@ -27,4 +27,4 @@ async def roll(ctx, limit: int):
 async def choose(ctx, *choices: str):
     await ctx.send(random.choice(choices))
 
-bot.run('NTIwNDcyNjI0Mzg4ODk4ODI2.Duuchg.Ht2umBf_XepNiPAuh7bcNl3rleE')
+bot.run('')
