@@ -1,30 +1,30 @@
 import discord
-import asyncio
+from random import randint
+from random import random
+from discord.ext import commands
 
-class Bot(discord.Client):
-    async def on_ready(self):
-        print('Logged in as')
-        print(self.user.name)
-        print(self.user.id)
-        print('------')
+description = 'The NCG bot built for NCG kthxbye'
 
-    async def on_message(self, message):
-        # don't respond to ourselves
-        if message.author == self.user:
-            return
-        if message.content.startswith('!test'):
-            counter = 0
-            tmp = await message.channel.send('Calculating messages...')
-            async for msg in message.channel.history(limit=100):
-                if msg.author == message.author:
-                    counter += 1
-            await tmp.edit(content='You have {} messages.'.format(counter))
-        
-        elif message.content.startswith('!sleep'):
-            with message.channel.typing():
-                tmp = await message.channel.send("okay I slep lol.")
-                await asyncio.sleep(5.0)
-                await tmp.edit(content='Done sleeping.')
+bot = commands.Bot(command_prefix = '!', description=description)
 
-client = Bot()
-client.run('')
+@bot.event
+async def on_ready():
+    print('Bot started as')
+    print(bot.user.name)
+    print(bot.user.id)
+
+@bot.command(description="Adds 2 numbers together, duh.")
+async def add(ctx, left: int, right: int):
+    """Adds two numbers together."""
+    await ctx.send(left+right)
+
+@bot.command(description="Rolls a random number, when given a max value")
+async def roll(ctx, limit: int):
+    """Rolls a random number, when given a max value"""
+    await ctx.send(randint(0, limit))
+    
+@bot.command(description="Selects a random item based on given items")
+async def choose(ctx, *choices: str):
+    await ctx.send(random.choice(choices))
+
+bot.run('NTIwNDcyNjI0Mzg4ODk4ODI2.Duuchg.Ht2umBf_XepNiPAuh7bcNl3rleE')
